@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Practica20250312G06.MVCCodeFirst.Models.Proveedor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Proveedor</h2>
+
+<a asp-action="Create" class="btn btn-success">Nuevo</a>
+
+<form>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label class="control-label">Nombre</label>
+            <input name="nombre" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label">Apellido</label>
+            <input name="apellido" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-12">
+            <input type="submit" value="Buscar" class="btn btn-primary" />
+            <input type="submit" value="Limpiar" class="btn btn-dark" />
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Modificar</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Datalle</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
